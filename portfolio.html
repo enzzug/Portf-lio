@@ -1,0 +1,1339 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfólio - Antonny Enzo Queiroz De Sousa</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+    
+    <style>
+        /* ========================================
+           RESET E CONFIGURAÇÕES GLOBAIS
+           ======================================== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: #000000;
+            color: #e0e0e0;
+            line-height: 1.6;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        /* Fundo com Grid Futurista */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                linear-gradient(0deg, transparent 24%, rgba(0, 212, 255, 0.05) 25%, rgba(0, 212, 255, 0.05) 26%, transparent 27%, transparent 74%, rgba(0, 212, 255, 0.05) 75%, rgba(0, 212, 255, 0.05) 76%, transparent 77%, transparent),
+                linear-gradient(90deg, transparent 24%, rgba(0, 212, 255, 0.05) 25%, rgba(0, 212, 255, 0.05) 26%, transparent 27%, transparent 74%, rgba(0, 212, 255, 0.05) 75%, rgba(0, 212, 255, 0.05) 76%, transparent 77%, transparent);
+            background-size: 50px 50px;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        /* Overlay com efeito de scanner */
+        body::after {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(0deg, transparent 0%, rgba(0, 212, 255, 0.03) 50%, transparent 100%);
+            animation: scannerEffect 8s linear infinite;
+            pointer-events: none;
+            z-index: 2;
+        }
+
+        @keyframes scannerEffect {
+            0% {
+                transform: translateY(-100%);
+            }
+            100% {
+                transform: translateY(100vh);
+            }
+        }
+
+        /* ========================================
+           HEADER E NAVEGAÇÃO
+           ======================================== */
+        header {
+            position: relative;
+            z-index: 100;
+        }
+        header {
+            background: #000000;
+            backdrop-filter: blur(10px);
+            padding: 1rem 2rem;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 2px solid #00d4ff;
+            box-shadow: 0 4px 20px rgba(0, 212, 255, 0.1);
+            border-bottom-color: #00d4ff;
+        }
+
+        header::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, #00d4ff, transparent);
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% {
+                opacity: 0.5;
+            }
+            50% {
+                opacity: 1;
+            }
+        }
+
+        .header-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, #00d4ff, #0099cc);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            letter-spacing: 1px;
+        }
+
+        nav {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #e0e0e0;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: #00d4ff;
+            transition: width 0.3s ease;
+        }
+
+        nav a:hover::after {
+            width: 100%;
+        }
+
+        /* Menu Hambúrguer para Mobile */
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            gap: 5px;
+        }
+
+        .hamburger span {
+            width: 25px;
+            height: 3px;
+            background: #00d4ff;
+            border-radius: 2px;
+            transition: all 0.3s ease;
+        }
+
+        .hamburger.active span:nth-child(1) {
+            transform: rotate(45deg) translate(10px, 10px);
+        }
+
+        .hamburger.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .hamburger.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(7px, -7px);
+        }
+
+        /* ========================================
+           HERO SECTION
+           ======================================== */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(0, 212, 255, 0.1) 0%, transparent 70%);
+            border-radius: 50%;
+            top: -100px;
+            right: -100px;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle, rgba(0, 212, 255, 0.05) 0%, transparent 70%);
+            border-radius: 50%;
+            bottom: -50px;
+            left: -50px;
+            animation: float 8s ease-in-out infinite reverse;
+        }
+
+        .hero-content {
+            text-align: center;
+            z-index: 1;
+            animation: fadeInUp 1s ease-out;
+        }
+
+        .hero h1 {
+            font-size: clamp(2.5rem, 8vw, 4.5rem);
+            font-weight: 700;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, #00d4ff, #0099cc);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            letter-spacing: -1px;
+        }
+
+        .hero .subtitle {
+            font-size: clamp(1.1rem, 3vw, 1.5rem);
+            color: #b0b0b0;
+            margin-bottom: 2rem;
+            font-weight: 300;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 1rem 2.5rem;
+            background: linear-gradient(135deg, #00d4ff, #0099cc);
+            color: #0a0e27;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            border: 2px solid #00d4ff;
+            cursor: pointer;
+            box-shadow: 0 0 20px rgba(0, 212, 255, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.2);
+            transition: left 0.3s ease;
+            z-index: -1;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(0, 212, 255, 0.5);
+        }
+
+        .cta-button:hover::before {
+            left: 100%;
+        }
+
+        /* ========================================
+           ANIMAÇÕES
+           ======================================== */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0px);
+            }
+            50% {
+                transform: translateY(-20px);
+            }
+        }
+
+        @keyframes slideInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes slideInRight {
+            from {
+                opacity: 0;
+                transform: translateX(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes glow {
+            0%, 100% {
+                box-shadow: 0 0 10px rgba(0, 212, 255, 0.3);
+            }
+            50% {
+                box-shadow: 0 0 20px rgba(0, 212, 255, 0.6);
+            }
+        }
+
+        @keyframes floatParticle {
+            0% {
+                transform: translateY(0) translateX(0);
+                opacity: 0;
+            }
+            10% {
+                opacity: 1;
+            }
+            90% {
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-100vh) translateX(100px);
+                opacity: 0;
+            }
+        }
+
+        /* Partículas Futuristas */
+        .particle {
+            position: fixed;
+            width: 2px;
+            height: 2px;
+            background: #00d4ff;
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 1;
+            box-shadow: 0 0 10px rgba(0, 212, 255, 0.8);
+        }
+
+/* ========================================
+   SEÇÕES GERAIS
+   ======================================== */
+section {
+    padding: 8rem 2rem; /* Aumentado de 4rem para 8rem para dar mais respiro */
+    max-width: 1200px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 10;
+    min-height: 60vh; /* Garante que cada seção ocupe pelo menos 60% da altura da tela */
+}
+
+/* ========================================
+   SCROLL ANIMATIONS (Lá no final do CSS)
+   ======================================== */
+.fade-in {
+    opacity: 0;
+    transform: translateY(50px); /* Aumentado de 30px para 50px para um movimento maior */
+    transition: opacity 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94), transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94); /* Curva de animação mais fluida e premium */
+}
+
+.fade-in.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+        /* ========================================
+           SEÇÃO SOBRE MIM
+           ======================================== */
+        .about {
+            background: rgba(0, 212, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            padding: 3rem;
+            border: 2px solid rgba(0, 212, 255, 0.3);
+            animation: slideInLeft 0.8s ease-out;
+            position: relative;
+            overflow: hidden;
+            box-shadow: inset 0 0 20px rgba(0, 212, 255, 0.05), 0 8px 32px rgba(0, 212, 255, 0.1);
+        }
+
+        .about::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 20px;
+            height: 20px;
+            border-top: 2px solid #00d4ff;
+            border-left: 2px solid #00d4ff;
+            border-radius: 0 0 0 5px;
+        }
+
+        .about::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            width: 20px;
+            height: 20px;
+            border-bottom: 2px solid #00d4ff;
+            border-right: 2px solid #00d4ff;
+            border-radius: 5px 0 0 0;
+        }
+
+        .about:hover {
+            border-color: rgba(0, 212, 255, 0.6);
+            background: rgba(0, 212, 255, 0.08);
+            box-shadow: inset 0 0 20px rgba(0, 212, 255, 0.1), 0 8px 32px rgba(0, 212, 255, 0.2);
+        }
+
+        .about h2 {
+            color: #00d4ff;
+            margin-bottom: 1.5rem;
+            font-size: 2rem;
+            position: relative;
+            padding-bottom: 1rem;
+        }
+
+        .about h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 60px;
+            height: 2px;
+            background: linear-gradient(90deg, #00d4ff, transparent);
+        }
+
+        .about p {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: #d0d0d0;
+            font-weight: 300;
+        }
+
+        /* ========================================
+           SEÇÃO EXPERIÊNCIA
+           ======================================== */
+        .experience-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .experience-card {
+            background: rgba(0, 212, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border: 2px solid rgba(0, 212, 255, 0.3);
+            border-radius: 12px;
+            padding: 2rem;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            animation: fadeInUp 0.8s ease-out;
+            box-shadow: inset 0 0 15px rgba(0, 212, 255, 0.05), 0 8px 32px rgba(0, 212, 255, 0.1);
+        }
+
+        .experience-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 4px;
+            height: 100%;
+            background: linear-gradient(180deg, #00d4ff, transparent);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .experience-card::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 15px;
+            height: 15px;
+            border-top: 2px solid #00d4ff;
+            border-right: 2px solid #00d4ff;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .experience-card:hover {
+            border-color: rgba(0, 212, 255, 0.6);
+            background: rgba(0, 212, 255, 0.08);
+            transform: translateY(-5px);
+            box-shadow: inset 0 0 15px rgba(0, 212, 255, 0.1), 0 10px 40px rgba(0, 212, 255, 0.3);
+        }
+
+        .experience-card:hover::before {
+            opacity: 1;
+        }
+
+        .experience-card:hover::after {
+            opacity: 1;
+        }
+
+        .experience-card h3 {
+            color: #00d4ff;
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+            position: relative;
+            padding-bottom: 0.5rem;
+        }
+
+        .experience-card h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 40px;
+            height: 2px;
+            background: linear-gradient(90deg, #00d4ff, transparent);
+        }
+
+        .experience-card .position {
+            color: #b0b0b0;
+            font-size: 0.95rem;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+        }
+
+        .experience-card .date {
+            color: #888;
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .experience-card .date::before {
+            content: '⏱️';
+            margin-right: 0.3rem;
+        }
+
+        .experience-card p {
+            color: #d0d0d0;
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        /* ========================================
+           SEÇÃO FORMAÇÃO
+           ======================================== */
+        .education-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .education-card {
+            background: rgba(0, 212, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border: 2px solid rgba(0, 212, 255, 0.3);
+            border-radius: 12px;
+            padding: 2rem;
+            transition: all 0.3s ease;
+            animation: fadeInUp 0.8s ease-out;
+            position: relative;
+            overflow: hidden;
+            box-shadow: inset 0 0 15px rgba(0, 212, 255, 0.05), 0 8px 32px rgba(0, 212, 255, 0.1);
+        }
+
+        .education-card::before {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: linear-gradient(90deg, #00d4ff, transparent);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .education-card::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 15px;
+            height: 15px;
+            border-bottom: 2px solid #00d4ff;
+            border-left: 2px solid #00d4ff;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .education-card:hover {
+            border-color: rgba(0, 212, 255, 0.6);
+            background: rgba(0, 212, 255, 0.08);
+            transform: translateY(-5px);
+            box-shadow: inset 0 0 15px rgba(0, 212, 255, 0.1), 0 10px 40px rgba(0, 212, 255, 0.3);
+        }
+
+        .education-card:hover::before {
+            opacity: 1;
+        }
+
+        .education-card:hover::after {
+            opacity: 1;
+        }
+
+        .education-card h3 {
+            color: #00d4ff;
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+            position: relative;
+            padding-bottom: 0.5rem;
+        }
+
+        .education-card h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 40px;
+            height: 2px;
+            background: linear-gradient(90deg, #00d4ff, transparent);
+        }
+
+        .education-card .institution {
+            color: #b0b0b0;
+            font-size: 0.95rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .education-card .status {
+            color: #888;
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .education-card .status::before {
+            content: '\2713';
+            color: #00d4ff;
+            font-weight: bold;
+            margin-right: 0.5rem;
+        }
+
+        .education-card p {
+            color: #d0d0d0;
+            font-size: 0.9rem;
+        }
+
+        /* ========================================
+           SEÇÃO CURRÍCULO
+           ======================================== */
+        .curriculum-section {
+            text-align: center;
+            background: rgba(0, 212, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            padding: 4rem 2rem;
+            border: 2px solid rgba(0, 212, 255, 0.3);
+            animation: slideInRight 0.8s ease-out;
+            margin: 3rem 0;
+            position: relative;
+            overflow: hidden;
+            box-shadow: inset 0 0 20px rgba(0, 212, 255, 0.05), 0 8px 32px rgba(0, 212, 255, 0.1);
+        }
+
+        .curriculum-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 30px;
+            height: 30px;
+            border-top: 2px solid #00d4ff;
+            border-left: 2px solid #00d4ff;
+            border-radius: 0 0 0 5px;
+        }
+
+        .curriculum-section::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            width: 30px;
+            height: 30px;
+            border-bottom: 2px solid #00d4ff;
+            border-right: 2px solid #00d4ff;
+            border-radius: 5px 0 0 0;
+        }
+
+        .curriculum-section:hover {
+            border-color: rgba(0, 212, 255, 0.6);
+            background: rgba(0, 212, 255, 0.08);
+            box-shadow: inset 0 0 20px rgba(0, 212, 255, 0.1), 0 8px 32px rgba(0, 212, 255, 0.2);
+        }
+
+        .curriculum-icon {
+            font-size: 4rem;
+            margin-bottom: 1.5rem;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        .curriculum-section h2 {
+            color: #00d4ff;
+            margin-bottom: 1rem;
+            font-size: 1.8rem;
+        }
+
+        .curriculum-section p {
+            color: #b0b0b0;
+            margin-bottom: 2rem;
+            font-size: 1.05rem;
+        }
+
+        .download-button {
+            display: inline-block;
+            padding: 1.2rem 3rem;
+            background: linear-gradient(135deg, #00d4ff, #0099cc);
+            color: #0a0e27;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            border: 2px solid #00d4ff;
+            cursor: pointer;
+            box-shadow: 0 0 20px rgba(0, 212, 255, 0.3);
+            position: relative;
+            overflow: hidden;
+            animation: glow 2s ease-in-out infinite;
+        }
+
+        .download-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.2);
+            transition: left 0.3s ease;
+        }
+
+        .download-button:hover {
+            transform: scale(1.05);
+            box-shadow: 0 10px 40px rgba(0, 212, 255, 0.6);
+        }
+
+        .download-button:hover::before {
+            left: 100%;
+        }
+
+        .download-button::after {
+            content: ' ⬇️';
+            margin-left: 0.5rem;
+        }
+
+        /* ========================================
+           RODAPÉ
+           ======================================== */
+        footer {
+            background: #000000;
+            border-top: 2px solid #00d4ff;
+            padding: 3rem 2rem;
+            text-align: center;
+            margin-top: 3rem;
+            position: relative;
+            z-index: 10;
+        }
+
+        footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, #00d4ff, transparent);
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .footer-title {
+            color: #00d4ff;
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+            font-weight: 700;
+        }
+
+        .contact-info {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .contact-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .contact-item .icon {
+            font-size: 1.8rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .contact-item a, .contact-item p {
+            color: #d0d0d0;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            font-size: 1rem;
+        }
+
+        .contact-item a:hover {
+            color: #00d4ff;
+            text-decoration: underline;
+        }
+
+        /* ========================================
+           REDES SOCIAIS
+           ======================================== */
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 2.5rem;
+            flex-wrap: wrap;
+        }
+
+        .social-link {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 50px;
+            height: 50px;
+            border: 2px solid rgba(0, 212, 255, 0.3);
+            border-radius: 50%;
+            background: rgba(0, 212, 255, 0.05);
+            backdrop-filter: blur(10px);
+            color: #00d4ff;
+            text-decoration: none;
+            font-size: 1.5rem;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            box-shadow: inset 0 0 10px rgba(0, 212, 255, 0.05), 0 4px 15px rgba(0, 212, 255, 0.1);
+        }
+
+        .social-link::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 212, 255, 0.2);
+            transition: left 0.3s ease;
+            z-index: -1;
+        }
+
+        .social-link:hover {
+            border-color: #00d4ff;
+            background: rgba(0, 212, 255, 0.1);
+            transform: translateY(-5px) scale(1.1);
+            box-shadow: inset 0 0 15px rgba(0, 212, 255, 0.1), 0 8px 25px rgba(0, 212, 255, 0.4);
+        }
+
+        .social-link:hover::before {
+            left: 0;
+        }
+
+        .social-link span {
+            position: relative;
+            z-index: 1;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(0, 212, 255, 0.2);
+            padding-top: 2rem;
+            color: #888;
+            font-size: 0.9rem;
+        }
+
+        /* ========================================
+           RESPONSIVIDADE MOBILE
+           ======================================== */
+        @media (max-width: 768px) {
+            /* Header Mobile */
+            nav {
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                flex-direction: column;
+                background: rgba(10, 14, 39, 0.98);
+                padding: 2rem;
+                gap: 1rem;
+                max-height: 0;
+                overflow: hidden;
+                transition: max-height 0.3s ease;
+                border-bottom: 2px solid #00d4ff;
+            }
+
+            nav.active {
+                max-height: 300px;
+            }
+
+            .hamburger {
+                display: flex;
+            }
+
+            /* Seções */
+            section {
+                padding: 2.5rem 1rem;
+            }
+
+            .about {
+                padding: 2rem 1.5rem;
+            }
+
+            .curriculum-section {
+                padding: 2.5rem 1.5rem;
+            }
+
+            /* Cards */
+            .experience-card, .education-card {
+                padding: 1.5rem;
+            }
+
+            /* Footer */
+            .contact-info {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+
+            /* Hero */
+            .hero {
+                min-height: 80vh;
+            }
+
+            .hero h1 {
+                margin-bottom: 0.5rem;
+            }
+
+            .hero .subtitle {
+                margin-bottom: 1.5rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .hero .subtitle {
+                font-size: 1rem;
+            }
+
+            .cta-button, .download-button {
+                padding: 0.9rem 2rem;
+                font-size: 1rem;
+            }
+
+            .section-title {
+                font-size: 1.5rem;
+            }
+
+            header {
+                padding: 1rem;
+            }
+
+            .logo {
+                font-size: 1.2rem;
+            }
+
+            .footer-title {
+                font-size: 1.2rem;
+            }
+
+            .social-links {
+                gap: 1.5rem;
+            }
+
+            .social-link {
+                width: 45px;
+                height: 45px;
+                font-size: 1.2rem;
+            }
+        }
+
+        /* ========================================
+           SCROLL ANIMATIONS
+           ======================================== */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s ease-out;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+
+    <script>
+        // ========================================
+        // SCRIPT PARA INTERATIVIDADE E EFEITOS FUTURISTAS
+        // ========================================
+
+        // Funcao para gerar particulas flutuantes futuristas
+        function createParticles() {
+            const particleCount = 30;
+            for (let i = 0; i < particleCount; i++) {
+                const particle = document.createElement('div');
+                particle.className = 'particle';
+                
+                // Posicao aleatoria no eixo X
+                const randomX = Math.random() * window.innerWidth;
+                particle.style.left = randomX + 'px';
+                particle.style.top = window.innerHeight + 'px';
+                
+                // Duracao aleatoria da animacao
+                const duration = 8 + Math.random() * 12;
+                particle.style.animation = 'floatParticle ' + duration + 's linear infinite';
+                
+                // Delay aleatorio
+                particle.style.animationDelay = (Math.random() * 5) + 's';
+                
+                // Tamanho aleatorio
+                const size = 1 + Math.random() * 3;
+                particle.style.width = size + 'px';
+                particle.style.height = size + 'px';
+                
+                document.body.appendChild(particle);
+            }
+        }
+
+        // Menu Hambúrguer
+        document.addEventListener('DOMContentLoaded', function() {
+            // Criar particulas futuristas
+            createParticles();
+            const hamburger = document.querySelector('.hamburger');
+            const nav = document.querySelector('nav');
+
+            // Toggle menu ao clicar no hambúrguer
+            hamburger.addEventListener('click', function() {
+                hamburger.classList.toggle('active');
+                nav.classList.toggle('active');
+            });
+
+            // Fechar menu ao clicar em um link
+            document.querySelectorAll('nav a').forEach(link => {
+                link.addEventListener('click', function() {
+                    hamburger.classList.remove('active');
+                    nav.classList.remove('active');
+                });
+            });
+
+    // Scroll Animations - Fade In ao rolar
+    const observerOptions = {
+    threshold: 0.15, /* Exige que 15% do elemento esteja visível antes de animar */
+    rootMargin: '0px 0px -100px 0px' /* A animação só dispara quando o elemento passa 100px para cima da borda inferior da tela */
+};
+
+    const observer = new IntersectionObserver(function(entries) {
+        entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+            observer.unobserve(entry.target);
+        }
+    });
+}, observerOptions);
+
+// Aplicar observador a vários elementos para um efeito em cascata
+document.querySelectorAll('.section-title, .experience-card, .education-card, .about, .curriculum-section').forEach(el => {
+    el.classList.add('fade-in');
+    observer.observe(el);
+});
+
+            // Aplicar observador a elementos com fade-in
+            document.querySelectorAll('.experience-card, .education-card, .about').forEach(el => {
+                el.classList.add('fade-in');
+                observer.observe(el);
+            });
+
+            // Scroll suave para links internos
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    const href = this.getAttribute('href');
+                    if (href !== '#') {
+                        e.preventDefault();
+                        const target = document.querySelector(href);
+                        if (target) {
+                            target.scrollIntoView({
+                                behavior: 'smooth',
+                                block: 'start'
+                            });
+                        }
+                    }
+                });
+            });
+
+            // Efeito glow nos botões ao hover
+            const buttons = document.querySelectorAll('.cta-button, .download-button');
+            buttons.forEach(button => {
+                button.addEventListener('mouseenter', function() {
+                    this.style.boxShadow = '0 10px 40px rgba(0, 212, 255, 0.8)';
+                });
+
+                button.addEventListener('mouseleave', function() {
+                    this.style.boxShadow = '0 0 20px rgba(0, 212, 255, 0.3)';
+                });
+            });
+
+            // Adicionar classe ao header ao fazer scroll
+            window.addEventListener('scroll', function() {
+                const header = document.querySelector('header');
+                if (window.scrollY > 50) {
+                    header.style.boxShadow = '0 8px 30px rgba(0, 212, 255, 0.2)';
+                } else {
+                    header.style.boxShadow = '0 4px 20px rgba(0, 212, 255, 0.1)';
+                }
+            });
+        });
+    </script>
+</head>
+<body>
+    <!-- ========================================
+         HEADER E NAVEGAÇÃO
+         ======================================== -->
+    <header>
+        <div class="header-container">
+            <div class="logo">ANTONNY ENZO</div>
+            <nav>
+                <a href="#sobre">Sobre</a>
+                <a href="#habilidades">Habilidades</a><a href="#experiencia">Experiência</a>
+                <a href="#formacao">Formação</a>
+                <a href="#curriculo">Currículo</a>
+                <a href="#contato">Contato</a>
+            </nav>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </header>
+
+    <!-- ========================================
+         HERO SECTION
+         ======================================== -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Antonny Enzo Queiroz De Sousa</h1>
+            <p class="subtitle">Profissional com formação técnica em Desenvolvimento de Sistemas</p>
+            <a href="#curriculo" class="cta-button">Baixar Currículo</a>
+        </div>
+    </section>
+
+    <!-- ========================================
+         SEÇÃO SOBRE MIM
+         ======================================== -->
+    <section id="sobre">
+        <h2 class="section-title">Sobre Mim</h2>
+        <div class="about">
+            <h2>Objetivo Profissional</h2>
+            <p>Atuar como Desenvolvedor Júnior, utilizando competências em HTML, CSS, PHP e JavaScript, com foco na integração de sistemas e gerenciamento de bancos de dados MySQL (Workbench). Busco contribuir para o desenvolvimento de soluções web funcionais e escaláveis, visando o crescimento tecnológico da organização.</p>
+        </div>
+    </section>
+
+    <!-- ========================================
+         SEÇÃO HABILIDADES TÉCNICAS
+         ======================================== -->
+    <section id="habilidades">
+        <h2 class="section-title">Habilidades Técnicas</h2>
+        <div class="education-container"> <div class="education-card"> <h3>Front-end</h3>
+                <p class="institution">Interface e Responsividade</p>
+                <p>Desenvolvimento visual de aplicações web utilizando <strong>HTML5, CSS3 e JavaScript</strong>.</p>
+            </div>
+
+            <div class="education-card">
+                <h3>Back-end & Lógica</h3>
+                <p class="institution">Regras de Negócio</p>
+                <p>Criação de sistemas dinâmicos e estruturação de lógica de programação com <strong>PHP e C</strong>.</p>
+            </div>
+
+            <div class="education-card">
+                <h3>Banco de Dados</h3>
+                <p class="institution">Armazenamento e Gestão</p>
+                <p>Modelagem e gerenciamento de dados utilizando <strong>MySQL e MySQL Workbench</strong>.</p>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- ========================================
+         SEÇÃO EXPERIÊNCIA PROFISSIONAL
+         ======================================== -->
+    <section id="experiencia">
+        <h2 class="section-title">Experiência Profissional</h2>
+        <div class="experience-container">
+            <!-- Card 1: Jotaeme Fitafer -->
+            <div class="experience-card">
+                <h3>Jotaeme Fitafer Industria Metalurgica Ltda</h3>
+                <p class="position">Aprendiz</p>
+                <p class="date">10/07/2025 a 03/07/2026</p>
+                <p>Atividades exercidas incluem compras, arquivamento, almoxarifado e recebimento. Experiência prática em gestão de materiais e processos administrativos.</p>
+            </div>
+
+            <!-- Card 2: Fidelity -->
+            <div class="experience-card">
+                <h3>Fidelity Processamento de Serviços S/A</h3>
+                <p class="position">Aprendiz</p>
+                <p class="date">12/06/2023 a 12/04/2024</p>
+                <p>Atividades exercidas incluem atendimento ao público, organização de documentos e alteração de planilhas. Desenvolvimento de habilidades em atendimento e organização.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========================================
+         SEÇÃO FORMAÇÃO ACADÊMICA
+         ======================================== -->
+    <section id="formacao">
+        <h2 class="section-title">Formação Acadêmica e Cursos</h2>
+        <div class="education-container">
+            <!-- Card 1: Técnico -->
+            <div class="education-card">
+                <h3>Técnico em Desenvolvimento de Sistemas</h3>
+                <p class="institution">ETEC Dr. Emílio Hernandez Aguilar</p>
+                <p class="status">3º Módulo - Em Andamento</p>
+                <p>Formação técnica em desenvolvimento de sistemas, com foco em programação, banco de dados e desenvolvimento web.</p>
+            </div>
+
+            <!-- Card 2: Ensino Médio -->
+            <div class="education-card">
+                <h3>Ensino Médio Completo</h3>
+                <p class="institution">E. E. Bueno de Azevedo Filho</p>
+                <p class="status">Concluído em 2023</p>
+                <p>Conclusão do ensino médio com formação geral em disciplinas acadêmicas.</p>
+            </div>
+
+            <!-- Card 3: Cursos -->
+            <div class="education-card">
+                <h3>Cursos Complementares</h3>
+                <p class="institution">Associação Cultural Comunitária Pró-Morato</p>
+                <p class="status">Carga Horária: 300 horas</p>
+                <p>Cursos de Rotinas Administrativas, Inclusão Digital e outros, desenvolvendo competências práticas e digitais.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========================================
+         SEÇÃO CURRÍCULO (DESTAQUE)
+         ======================================== -->
+    <section id="curriculo">
+        <div class="curriculum-section">
+            <div class="curriculum-icon">📄</div>
+            <h2>Meu Currículo</h2>
+            <p>Clique no botão abaixo para baixar meu currículo em formato PDF e conhecer mais detalhes sobre minha formação e experiência profissional.</p>
+            <!-- Botão de Download - Configurado com atributo download -->
+            <a href="data:text/plain;base64,Q3VSUkzDiUNVTE8gLSBBTlRPTk5ZIEVOWk8gUVVFSVJPWiBERSBTT1VTQQoKRW1haWw6IEFudG9ubnllbnpvcXVlaXJvekBnbWFpbC5jb20KVCBQZWZVZGVZZM6gKDExKSA5MTU0OS00MzcxCkxvY2FsaXphw6fDo286IEZyYW5jaXNjbyBNb3JhdG8sIFNQCgpFWFBFUknDiE5DSUEgUFJPRklTU0lPTkFMOgoKSm90YWVtZSBGaXRhZmVyIEluZHVzdHJpYSBNZXRhbHVyZ2ljYSBMdGRhIC0gQXByZW5kaXogKDEwLzA3LzI1IGEgMDMvMDcvMjYpCkF0aXZpZGFkZXM6IENvbXByYXMsIGFycXVpdmFtZW50bywgYWxtb3hhcmlmYWRvIGUgcmVjZWJpbWVudG8uCgpGaWRlbGl0eSBQcm9jZXNzYW1lbnRvIGRlIFNlcnbDp29zIFMvQSAtIEFwcmVuZGl6ICgxMi8wNi8yMDIzIGEgMTIvMDQvMjAyNCkKQXRpdmlkYWRlczogQXRlbmRpbWVudG8gYW8gcMO6YmxpY28sIG9yZ2FuaXphw6fDo28gZGUgZG9jdW1lbnRvcyBlIGFsdGVyYcOnw6NvIGRlIHBsYW5pbGhhcy4KCkZPUk1Bw4fDg08gQUNBRMOJTUlDQToKClTDqWNuaWNvIGVtIERlc2Vudm9sdmltZW50byBkZSBTaXN0ZW1hcyAtIEVURUMgRHIuIEVtw610aW8gSGVybmFuZGV6IEFndWlsYXIgKDPCsiBNw7NkdWxvKQoKRW5zaW5vIE3DqWRpbyBDb21wbGV0byAtIEUuRS4gQnVlbm8gZGUgQXplbmVkbyBGaWxobyAoQ29uY2x1w610byBlbSAyMDIzKQoKQ3Vyc29zIENvbXBsZW1lbnRhcmVzIC0gQXNzb2NpYcOnw6NvIEN1bHR1cmFsIENvbXVuaXTDoXJpYSBQcsOtLU1vcmF0byAoMzAwIGhvcmFzKQpSb3RpbmFzIEFkbWluaXN0cmF0aXZhcywgSW5jbHVzw6NvIERpZ2l0YWwgZSBvdXRyb3M=" download="curriculo.pdf" class="download-button">Baixar Meu Currículo (PDF)</a>
+        </div>
+    </section>
+
+    <!-- ========================================
+         RODAPÉ COM CONTATO
+         ======================================== -->
+    <footer id="contato">
+        <div class="footer-content">
+            <h2 class="footer-title">Entre em Contato</h2>
+            <div class="contact-info">
+                <div class="contact-item">
+                    <div class="icon">📧</div>
+                    <a href="mailto:Antonnyenzoqueiroz@gmail.com">Antonnyenzoqueiroz@gmail.com</a>
+                </div>
+                <div class="contact-item">
+                    <div class="icon">📱</div>
+                    <a href="tel:+5511915494371">(11) 91549-4371</a>
+                </div>
+                <div class="contact-item">
+                    <div class="icon">📍</div>
+                    <p>Francisco Morato, SP</p>
+                </div>
+            </div>
+            <!-- Redes Sociais -->
+            <div class="social-links">
+                <a href="https://github.com/enzzug" target="_blank" rel="noopener noreferrer" class="social-link" title="GitHub">
+                    <span>🐙</span>
+                </a>
+                <a href="https://www.instagram.com/_enzzu/" target="_blank" rel="noopener noreferrer" class="social-link" title="Instagram">
+                    <span>📷</span>
+                </a>
+                <a href="https://www.linkedin.com/in/antonny-enzo-queiroz-de-souza-1a2464235" target="_blank" rel="noopener noreferrer" class="social-link" title="LinkedIn">
+                    <span>💼</span>
+                </a>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Antonny Enzo Queiroz De Sousa. Todos os direitos reservados. | Desenvolvido com ❤️</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
